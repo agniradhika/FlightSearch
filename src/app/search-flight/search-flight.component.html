@@ -1,0 +1,56 @@
+<div>
+  <tabset>
+    <tab heading="One Way" id="tab1">
+      <form class="form-group">
+        <br>
+      <input type="text" placeholder="Enter origin city" class="form-control"><br>
+      <input type="text" placeholder="Enter Destination city" class="form-control"><br>
+      <div class="date_container">
+          <!--Start Date Container-->
+              <div class=" form-group">
+                  <input type="text" placeholder="Departure Date"
+                        class="form-control"
+                        [minDate]="minStartDate"
+                        [maxDate]="maxStartDate"
+                        #dp="bsDatepicker"
+                       bsDatepicker [(bsValue)]="myDepartureStartDateValue">
+                </div>         
+        </div>
+        <input type="number" placeholder="Passengers" class="form-control"><br>
+      <button class="btn btn-success">Submit</button> 
+    </form>
+          <hr>
+    </tab>
+    <tab heading="Return">
+      <form class="form-group">
+        <br>
+      <input type="text" placeholder="Enter origin city" class="form-control"><br>
+      <input type="text" placeholder="Enter Destination city" class="form-control"><br>
+      <div class="date_container">
+          <!--Start Date Container-->
+              <div class="form-group">
+                  <input type="text" placeholder="Departure Date"
+                        class="form-control"
+                        [minDate]="minStartDate"
+                        [maxDate]="maxStartDate"
+                        #dp="bsDatepicker"
+                        bsDatepicker [(bsValue)]="myReturnStartDateValue">
+                </div>
+          <!--End Date Container-->
+                <div class="form-group">
+                  <input type="text" placeholder="Return Date"
+                        class="form-control"
+                        [minDate]="minDate"
+                        [maxDate]="maxDate"
+                        #dp="bsDatepicker"
+                        bsDatepicker [(bsValue)]="myReturnEndDateValue">
+                </div> 
+                        
+        </div>
+        <input type="number" placeholder="Passengers" class="form-control"><br>
+      <button class="btn btn-success">Submit</button> 
+    </form>
+    <hr>
+</tab>
+  </tabset>
+</div>
