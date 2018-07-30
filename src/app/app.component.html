@@ -2,10 +2,10 @@
 
 <div class="container">
     <div class="row">
-        <search-flight class="col-sm-4">
+        <search-flight (childEvent)="message($event)" class="col-sm-4">
         </search-flight>
-      
-        <p  class="text-success col-sm-6">Flight details</p>
     
+        <display-flight-details *ngIf="displayFlightDetailsContainer" [parentData]="d" class="text-success col-sm-6"></display-flight-details>
+   
     </div>
 </div>

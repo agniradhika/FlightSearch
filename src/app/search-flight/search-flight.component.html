@@ -3,12 +3,12 @@
     <tab heading="One Way" id="tab1">
       <form class="form-group">
         <br>
-      <input type="text" placeholder="Enter origin city" class="form-control"><br>
-      <input type="text" placeholder="Enter Destination city" class="form-control"><br>
+      <input type="text" placeholder="Enter origin city" [(ngModel)]="origin" name="origincity" required class="form-control"><br>
+      <input type="text" placeholder="Enter Destination city" [(ngModel)]="destination" required name="destinationcity" class="form-control"><br>
       <div class="date_container">
           <!--Start Date Container-->
               <div class=" form-group">
-                  <input type="text" placeholder="Departure Date"
+                  <input type="text" placeholder="Departure Date" required
                         class="form-control"
                         [minDate]="minStartDate"
                         [maxDate]="maxStartDate"
@@ -16,16 +16,16 @@
                        bsDatepicker [(bsValue)]="myDepartureStartDateValue">
                 </div>         
         </div>
-        <input type="number" placeholder="Passengers" class="form-control"><br>
-      <button class="btn btn-success">Submit</button> 
+        <input type="number" placeholder="Passengers" [(ngModel)]="passengernumber" name="pass" required class="form-control"><br>
+      <button class="btn btn-success" (click)="checkDetailsOneway()">Submit</button> 
     </form>
           <hr>
     </tab>
     <tab heading="Return">
       <form class="form-group">
         <br>
-      <input type="text" placeholder="Enter origin city" class="form-control"><br>
-      <input type="text" placeholder="Enter Destination city" class="form-control"><br>
+      <input type="text" placeholder="Enter origin city"[(ngModel)]="origin" name="origincity" required class="form-control"><br>
+      <input type="text" placeholder="Enter Destination city" [(ngModel)]="destination" name="destinationcity" required class="form-control"><br>
       <div class="date_container">
           <!--Start Date Container-->
               <div class="form-group">
@@ -44,13 +44,13 @@
                         [maxDate]="maxDate"
                         #dp="bsDatepicker"
                         bsDatepicker [(bsValue)]="myReturnEndDateValue">
-                </div> 
-                        
+                </div>              
         </div>
         <input type="number" placeholder="Passengers" class="form-control"><br>
-      <button class="btn btn-success">Submit</button> 
+      <button class="btn btn-success" (click)="checkDetailsReturn()">Submit</button> 
     </form>
     <hr>
 </tab>
   </tabset>
 </div>
+
