@@ -1,0 +1,31 @@
+
+ [ {
+    "airline": "Airindia 737",
+    "from": "Pune",
+    "to": "Delhi",
+    "date": "30-7-2018",
+    "price": "9500",
+    "departTime": "12:00 PM",
+    "arriveTime": "14:00 PM",
+    "seats":"10"
+    },
+     {
+    "airline": "Airindia 737",
+    "from": "Delhi",
+    "to": "Pune",
+      "date": "30-07-2018",
+      "price": "3900",
+      "departTime": "08:10 AM",
+      "arriveTime": "10:10 AM",
+      "seats":"5"
+    },{
+    "airline": "Indigo Airbus",
+    "from": "Pune",
+    "to": "Delhi",
+      "date": "30-07-2018",
+      "price": "3000",
+      "departTime": "09:00 AM",
+      "arriveTime": "10:50 AM",
+      "seats":"3"
+    }
+  ]
