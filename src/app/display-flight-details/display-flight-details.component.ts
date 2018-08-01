@@ -8,6 +8,7 @@ import { FlightSearchService } from '../flight-search.service';
 })
 export class DisplayFlightDetailsComponent implements OnInit {
  flightDetails: object;
+ flight=[];
 public headercontainer = false;
 originC;
 destinationC;

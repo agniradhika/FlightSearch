@@ -4,13 +4,20 @@
     <tab heading="One Way" id="tab1">
       <form class="form-group" #searchForm = "ngForm">
         <br>
-      <input type="text" placeholder="Enter origin city" #cityoforigin= "ngModel" [(ngModel)]="origin" name="origincity" required class="form-control"><br>
+    
+      <input type="text" placeholder="Enter origin city" list="originFrom" #cityoforigin= "ngModel" [(ngModel)]="origin" name="origincity" required class="form-control"><br>
+      <datalist id="originFrom">
+        <option *ngFor="let f of cityDetails" value="{{f.city}}"></option>
+      </datalist>
       <!-- Error Message -->
       <div *ngIf="cityoforigin.errors">
         <span *ngIf="cityoforigin.errors['required'] && cityoforigin.touched" class="text-danger">This is a mandatory field</span>
          </div>
-      <input type="text" placeholder="Enter Destination city" #cityofdestination= "ngModel" [(ngModel)]="destination" required name="destinationcity" class="form-control"><br>
-       <!-- Error Message -->
+      <input type="text" placeholder="Enter Destination city" list="destinationTo" #cityofdestination= "ngModel" [(ngModel)]="destination" required name="destinationcity" class="form-control"><br>
+      <datalist id="destinationTo">
+        <option *ngFor="let f of cityDetails" value="{{f.city}}"></option>
+      </datalist>
+      <!-- Error Message -->
        <div *ngIf="cityofdestination.errors">
         <span *ngIf="cityofdestination.errors['required'] && cityofdestination.touched" class="text-danger">This is a mandatory field</span>
          </div>
@@ -41,13 +48,19 @@
       <form  #searchReturnForm = "ngForm">
         <div class="form-group">
         <br>
-        <input type="text" placeholder="Enter origin city" #returncityoforigin="ngModel" [(ngModel)]="origin" name="origincity" required class="form-control"><br>
-         <!-- Error Message -->
+        <input type="text" placeholder="Enter origin city" list="originReturnFrom" #returncityoforigin="ngModel" [(ngModel)]="origin" name="origincity" required class="form-control"><br>
+        <datalist id="originReturnFrom">
+          <option *ngFor="let f of cityDetails" value="{{f.city}}"></option>
+        </datalist>
+        <!-- Error Message -->
          <div *ngIf="returncityoforigin.errors">
           <span *ngIf="returncityoforigin.errors['required'] && returncityoforigin.touched" class="text-danger">This is a mandatory field</span>
         </div>
-        <input type="text" placeholder="Enter Destination city" #returncityofdestination="ngModel" [(ngModel)]="destination" name="destinationcity" required class="form-control"><br>
-          <!-- Error Message -->
+        <input type="text" placeholder="Enter Destination city" list="destinationReturnTo" #returncityofdestination="ngModel" [(ngModel)]="destination" name="destinationcity" required class="form-control"><br>
+        <datalist id="destinationReturnTo">
+          <option *ngFor="let f of cityDetails" value="{{f.city}}"></option>
+        </datalist>
+        <!-- Error Message -->
           <div *ngIf="returncityofdestination.errors">
             <span *ngIf="returncityofdestination.errors['required'] && returncityofdestination.touched" class="text-danger">This is a mandatory field</span>
           </div>
