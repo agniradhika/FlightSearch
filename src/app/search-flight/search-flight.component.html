@@ -16,14 +16,16 @@
          </div>
       <div class="date_container">
           <!--Start Date Container-->
-              <div class=" form-group">
+              <div class="form-group">
                   <input type="text" placeholder="Departure Date" required
                         class="form-control"
-                        [minDate]="minStartDate"
-                        [maxDate]="maxStartDate"
-                        #dp="bsDatepicker"
-                       bsDatepicker [(bsValue)]="myDepartureStartDateValue">
-                </div>         
+                        #templatedate="ngModel"
+                       bsDatepicker [(ngModel)]="myDepartureStartDateValue" name="dateoneway">
+                </div>  
+                 <!-- Error Message -->
+          <div *ngIf="templatedate.errors">
+            <span *ngIf="templatedate.errors['required'] && templatedate.touched" class="text-danger">This is a mandatory field</span>
+          </div>       
         </div>
        
         <input type="number" placeholder="Passengers" #numberofpassengers = "ngModel" [(ngModel)]="passengernumber" name="pass" required class="form-control"><br>
@@ -49,27 +51,32 @@
           <div *ngIf="returncityofdestination.errors">
             <span *ngIf="returncityofdestination.errors['required'] && returncityofdestination.touched" class="text-danger">This is a mandatory field</span>
           </div>
-        <div class="date_container">
+        <div class="start_date_container">
           <!--Start Date Container-->
               <div class="form-group">
-                  <input type="text" placeholder="Departure Date"
+                  <input type="text" placeholder="Departure Date" required
                         class="form-control"
-                        [minDate]="minStartDate"
-                        [maxDate]="maxStartDate"
-                        #dp="bsDatepicker"
-                        bsDatepicker [(bsValue)]="myReturnStartDateValue">
+                        #templatereturnstartdate="ngModel"
+                        bsDatepicker [(ngModel)]="myReturnStartDateValue" name="startdate">
                 </div>
-               
+                <!-- Error message -->
+                <div *ngIf="templatereturnstartdate.errors">
+                  <span *ngIf="templatereturnstartdate.errors['required'] && templatereturnstartdate.touched" class="text-danger">This is a mandatory field</span>
+                </div>  
+              </div>
+
           <!--End Date Container-->
+          <div class="end_date_container">
                 <div class="form-group">
-                  <input type="text" placeholder="Return Date"
+                  <input type="text" placeholder="Return Date" required
                         class="form-control"
-                        [minDate]="minDate"
-                        [maxDate]="maxDate"
-                        #dp="bsDatepicker"
-                        bsDatepicker [(bsValue)]="myReturnEndDateValue">
+                        #templatereturnenddate="ngModel"
+                        bsDatepicker [(ngModel)]="myReturnEndDateValue" name="enddate">
                 </div> 
-                             
+                <!-- Error message -->
+                <div *ngIf="templatereturnenddate.errors">
+                  <span *ngIf="templatereturnenddate.errors['required'] && templatereturnenddate.touched" class="text-danger">This is a mandatory field</span>
+                </div>              
         </div>
         <input type="number" placeholder="Passengers" #returnnumberofpassengers="ngModel" [(ngModel)]="passengernumber" name="pass" required class="form-control"><br>
         <div *ngIf="returnnumberofpassengers.errors">
