@@ -30,13 +30,7 @@ public flightDetailsTemp;
     this._flightService.getFlightsData()
     .subscribe((data)=>{
        this.flightDetails = data;
-       this.compare();
       });
 
   }
-compare(){
-  console.log(this.flightDetails);
-  console.log(this.flightsData);
-}
-
 }
