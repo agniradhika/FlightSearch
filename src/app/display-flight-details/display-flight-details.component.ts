@@ -7,7 +7,7 @@ import { FlightSearchService } from '../flight-search.service';
   styleUrls: ['./display-flight-details.component.css']
 })
 export class DisplayFlightDetailsComponent implements OnInit {
-public flightDetails = [];
+ flightDetails: object;
 public headercontainer = false;
 originC;
 destinationC;
@@ -26,7 +26,6 @@ public flightDetailsTemp;
   constructor(private _flightService : FlightSearchService) { }
 
   ngOnInit() {
-    console.log("This is display component",this.flightsData);
     this._flightService.getFlightsData()
     .subscribe((data)=>{
        this.flightDetails = data;
