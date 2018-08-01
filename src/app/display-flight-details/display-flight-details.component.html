@@ -2,9 +2,9 @@
     <h2>{{flightsData.originC}} To {{flightsData.destinationC}}</h2>
 <hr>
 <div class="cardContainer">
-<div *ngFor="let flight of flightDetails">
-    <div class="card">
-        <div class="card-body">
+<div *ngFor="let flight of flightDetails |filterFlights: displayFlights">
+    <div class="card" [(ngModel)]="displayFlights">
+        <div class="card-body" >
         <p>  <span>Rs. {{flight.price}}</span>   
         </p>
              <table>

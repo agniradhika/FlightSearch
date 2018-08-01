@@ -1,10 +1,19 @@
+
 <div>
   <tabset>
     <tab heading="One Way" id="tab1">
-      <form class="form-group">
+      <form class="form-group" #searchForm = "ngForm">
         <br>
-      <input type="text" placeholder="Enter origin city" [(ngModel)]="origin" name="origincity" required class="form-control"><br>
-      <input type="text" placeholder="Enter Destination city" [(ngModel)]="destination" required name="destinationcity" class="form-control"><br>
+      <input type="text" placeholder="Enter origin city" #cityoforigin= "ngModel" [(ngModel)]="origin" name="origincity" required class="form-control"><br>
+      <!-- Error Message -->
+      <div *ngIf="cityoforigin.errors">
+        <span *ngIf="cityoforigin.errors['required'] && cityoforigin.touched" class="text-danger">This is a mandatory field</span>
+         </div>
+      <input type="text" placeholder="Enter Destination city" #cityofdestination= "ngModel" [(ngModel)]="destination" required name="destinationcity" class="form-control"><br>
+       <!-- Error Message -->
+       <div *ngIf="cityofdestination.errors">
+        <span *ngIf="cityofdestination.errors['required'] && cityofdestination.touched" class="text-danger">This is a mandatory field</span>
+         </div>
       <div class="date_container">
           <!--Start Date Container-->
               <div class=" form-group">
@@ -16,17 +25,31 @@
                        bsDatepicker [(bsValue)]="myDepartureStartDateValue">
                 </div>         
         </div>
-        <input type="number" placeholder="Passengers" [(ngModel)]="passengernumber" name="pass" required class="form-control"><br>
-      <button class="btn btn-success" (click)="checkDetailsOneway()">Submit</button> 
+       
+        <input type="number" placeholder="Passengers" #numberofpassengers = "ngModel" [(ngModel)]="passengernumber" name="pass" required class="form-control"><br>
+          <!-- Error Message -->
+          <div *ngIf="numberofpassengers.errors">
+            <span *ngIf="numberofpassengers.errors['required'] && numberofpassengers.touched" class="text-danger">This is a mandatory field</span>
+          </div>
+        <button class="btn btn-success" [disabled]="!searchForm.valid" (click)="checkDetailsOneway()">Submit</button> 
     </form>
           <hr>
     </tab>
     <tab heading="Return">
-      <form class="form-group">
+      <form  #searchReturnForm = "ngForm">
+        <div class="form-group">
         <br>
-      <input type="text" placeholder="Enter origin city"[(ngModel)]="origin" name="origincity" required class="form-control"><br>
-      <input type="text" placeholder="Enter Destination city" [(ngModel)]="destination" name="destinationcity" required class="form-control"><br>
-      <div class="date_container">
+        <input type="text" placeholder="Enter origin city" #returncityoforigin="ngModel" [(ngModel)]="origin" name="origincity" required class="form-control"><br>
+         <!-- Error Message -->
+         <div *ngIf="returncityoforigin.errors">
+          <span *ngIf="returncityoforigin.errors['required'] && returncityoforigin.touched" class="text-danger">This is a mandatory field</span>
+        </div>
+        <input type="text" placeholder="Enter Destination city" #returncityofdestination="ngModel" [(ngModel)]="destination" name="destinationcity" required class="form-control"><br>
+          <!-- Error Message -->
+          <div *ngIf="returncityofdestination.errors">
+            <span *ngIf="returncityofdestination.errors['required'] && returncityofdestination.touched" class="text-danger">This is a mandatory field</span>
+          </div>
+        <div class="date_container">
           <!--Start Date Container-->
               <div class="form-group">
                   <input type="text" placeholder="Departure Date"
@@ -36,6 +59,7 @@
                         #dp="bsDatepicker"
                         bsDatepicker [(bsValue)]="myReturnStartDateValue">
                 </div>
+               
           <!--End Date Container-->
                 <div class="form-group">
                   <input type="text" placeholder="Return Date"
@@ -44,13 +68,17 @@
                         [maxDate]="maxDate"
                         #dp="bsDatepicker"
                         bsDatepicker [(bsValue)]="myReturnEndDateValue">
-                </div>              
+                </div> 
+                             
         </div>
-        <input type="number" placeholder="Passengers" class="form-control"><br>
-      <button class="btn btn-success" (click)="checkDetailsReturn()">Submit</button> 
-    </form>
+        <input type="number" placeholder="Passengers" #returnnumberofpassengers="ngModel" [(ngModel)]="passengernumber" name="pass" required class="form-control"><br>
+        <div *ngIf="returnnumberofpassengers.errors">
+          <span *ngIf="returnnumberofpassengers.errors['required'] && returnnumberofpassengers.touched" class="text-danger">This is a mandatory field</span>
+        </div>
+        <button class="btn btn-success" [disabled]="!searchReturnForm.valid" (click)="checkDetailsReturn()">Submit</button> 
+      </div>
+      </form>
     <hr>
 </tab>
   </tabset>
 </div>
-

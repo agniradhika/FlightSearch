@@ -6,14 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
   title = 'flightSearchApp';
   displayFlightDetailsContainer = false;
   d;
-
 message(e){
   this.d=e;
   console.log("new data",this.d);
-  this.displayFlightDetailsContainer = true;
-}
+  this.displayFlightDetailsContainer = true; 
+ }
 }

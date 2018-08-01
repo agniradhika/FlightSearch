@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FlightSearchService } from '../flight-search.service';
 
 @Component({
   selector: 'search-flight',
@@ -14,11 +15,15 @@ export class SearchFlightComponent implements OnInit {
   passengernumber;
   flightData;
   flightDetails;
+  cityDetails;
  @Output()  public childEvent = new EventEmitter();
-  constructor() { }
+  constructor(private _flightService : FlightSearchService) { }
 
   ngOnInit() {
-    
+    this._flightService.getCityData()
+    .subscribe((data)=>{
+      this.cityDetails = data;
+    });
   }
   onDateChange(newStartDate: Date) {
     console.log(newStartDate);

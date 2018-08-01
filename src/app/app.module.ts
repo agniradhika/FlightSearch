@@ -9,17 +9,20 @@ import { SearchFlightComponent } from './search-flight/search-flight.component';
 import { DatepickerModule, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { DisplayFlightDetailsComponent } from './display-flight-details/display-flight-details.component';
 import { FlightSearchService } from './flight-search.service';
+import { FilterFlightsPipe } from './filter-flights.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchFlightComponent,
     DisplayFlightDetailsComponent,
+    FilterFlightsPipe,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     TabsModule.forRoot(),
     BsDatepickerModule.forRoot(),
     DatepickerModule.forRoot()
