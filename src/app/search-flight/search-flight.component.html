@@ -2,47 +2,53 @@
 <div>
   <tabset>
     <tab heading="One Way" id="tab1">
-      <form class="form-group" #searchForm = "ngForm">
-        <br>
-    
-      <input type="text" placeholder="Enter origin city" list="originFrom" #cityoforigin= "ngModel" [(ngModel)]="origin" name="origincity" required class="form-control"><br>
-      <datalist id="originFrom">
-        <option *ngFor="let f of cityDetails" value="{{f.city}}"></option>
-      </datalist>
-      <!-- Error Message -->
-      <div *ngIf="cityoforigin.errors">
-        <span *ngIf="cityoforigin.errors['required'] && cityoforigin.touched" class="text-danger">This is a mandatory field</span>
-         </div>
-      <input type="text" placeholder="Enter Destination city" list="destinationTo" #cityofdestination= "ngModel" [(ngModel)]="destination" required name="destinationcity" class="form-control"><br>
-      <datalist id="destinationTo">
-        <option *ngFor="let f of cityDetails" value="{{f.city}}"></option>
-      </datalist>
-      <!-- Error Message -->
-       <div *ngIf="cityofdestination.errors">
-        <span *ngIf="cityofdestination.errors['required'] && cityofdestination.touched" class="text-danger">This is a mandatory field</span>
-         </div>
-      <div class="date_container">
-          <!--Start Date Container-->
-              <div class="form-group">
-                  <input type="text" placeholder="Departure Date" required
-                        class="form-control"
-                        #templatedate="ngModel"
-                       bsDatepicker [(ngModel)]="myDepartureStartDateValue" name="dateoneway">
-                </div>  
-                 <!-- Error Message -->
+      <form class="form-group" #searchForm = "ngForm"><br>
+       <!-- Origin City Start -->
+        <input type="text" placeholder="Enter origin city" list="originFrom" #cityoforigin= "ngModel" [(ngModel)]="origin" name="origincity" required class="form-control"><br>
+          <datalist id="originFrom">
+            <option *ngFor="let f of cityDetails" value="{{f.city}}"></option>
+          </datalist>
+          <!-- Error Message -->
+          <div *ngIf="cityoforigin.errors">
+            <span *ngIf="cityoforigin.errors['required'] && cityoforigin.touched" class="text-danger">This is a mandatory field</span>
+          </div>
+         <!-- Origin City End -->
+
+         <!-- Destination City Start -->
+        <input type="text" placeholder="Enter Destination city" list="destinationTo" #cityofdestination= "ngModel" [(ngModel)]="destination" required name="destinationcity" class="form-control"><br>
+          <datalist id="destinationTo">
+            <option *ngFor="let f of cityDetails" value="{{f.city}}"></option>
+          </datalist>
+          <!-- Error Message -->
+          <div *ngIf="cityofdestination.errors">
+            <span *ngIf="cityofdestination.errors['required'] && cityofdestination.touched" class="text-danger">This is a mandatory field</span>
+            </div>
+         <!-- Destination city end -->
+
+        <!--Start Date Container-->
+        <div class="date_container">
+          <div class="form-group">
+            <input type="text" placeholder="Departure Date" required
+                  class="form-control"
+                  #templatedate="ngModel"
+                bsDatepicker [(ngModel)]="myDepartureStartDateValue" name="dateoneway">
+           </div>  
+          <!-- Error Message -->
           <div *ngIf="templatedate.errors">
             <span *ngIf="templatedate.errors['required'] && templatedate.touched" class="text-danger">This is a mandatory field</span>
           </div>       
-        </div>
-       
-        <input type="number" placeholder="Passengers" #numberofpassengers = "ngModel" [(ngModel)]="passengernumber" name="pass" required class="form-control"><br>
+         </div>
+         <!-- Start Date Container End -->
+                      
+        <input type="number" placeholder="Passengers" minlength="1" #numberofpassengers = "ngModel" [(ngModel)]="passengernumber" name="pass" required class="form-control"><br>
           <!-- Error Message -->
           <div *ngIf="numberofpassengers.errors">
             <span *ngIf="numberofpassengers.errors['required'] && numberofpassengers.touched" class="text-danger">This is a mandatory field</span>
+            <span *ngIf="numberofpassengers.errors['minlength'] && numberofpassengers.touched" class="text-danger">Minimum number of passengers is 1</span>
           </div>
         <button class="btn btn-success" [disabled]="!searchForm.valid" (click)="checkDetailsOneway()">Submit</button> 
-    </form>
-          <hr>
+      </form>
+                          <hr>
     </tab>
     <tab heading="Return">
       <form  #searchReturnForm = "ngForm">
@@ -91,9 +97,10 @@
                   <span *ngIf="templatereturnenddate.errors['required'] && templatereturnenddate.touched" class="text-danger">This is a mandatory field</span>
                 </div>              
         </div>
-        <input type="number" placeholder="Passengers" #returnnumberofpassengers="ngModel" [(ngModel)]="passengernumber" name="pass" required class="form-control"><br>
+        <input type="number" placeholder="Passengers" minlength="1" #returnnumberofpassengers="ngModel" [(ngModel)]="passengernumber" name="pass" required class="form-control"><br>
         <div *ngIf="returnnumberofpassengers.errors">
           <span *ngIf="returnnumberofpassengers.errors['required'] && returnnumberofpassengers.touched" class="text-danger">This is a mandatory field</span>
+          <span *ngIf="returnnumberofpassengers.errors['minlength'] && returnnumberofpassengers.touched" class="text-danger">Minimum number of passengers is 1</span>
         </div>
         <button class="btn btn-success" [disabled]="!searchReturnForm.valid" (click)="checkDetailsReturn()">Submit</button> 
       </div>
